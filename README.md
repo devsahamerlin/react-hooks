@@ -66,7 +66,18 @@ Le debounce permet d'améliorer les performances en attendant que l'utilisateur 
 ```
 <img src="images/recherche-1.png" width="260"/><img src="images/recherche-2.png" width="260"/><img src="images/recherche-3.png" width="260"/>
 
+### Difficultés rencontrées :
+
+1. **Communication entre composants** : La difficulté principale était de faire communiquer le composant `ProductSearch` avec le reste de l'application pour que le terme de recherche puisse filtrer les produits. **Solution** : J'ai utilisé une fonction de callback `onSearch` depuis le composant parent (`App`) vers `ProductSearch`. 
+
+2. **Mise à jour excessive lors de la saisie** : Chaque frappe de clavier déclenchait une mise à jour du filtre, ce qui pouvait causer des problèmes de performance. **Solution** : Implémentation du hook `useDebounce` qui retarde l'exécution de la recherche jusqu'à ce que l'utilisateur ait arrêté de taper, réduisant ainsi le nombre de rendus inutiles.
+
+3. **Logique de filtrage des produits** : Déterminer où placer la logique de filtrage entre le composant et le hook. **Solution** : J'ai placé la logique de filtrage dans le hook `useProductSearch` plutôt que dans le composant, ce qui maintient une meilleure séparation des préoccupations et rend le code plus modulaire.
+
+   
+
 ### Exercice 2 : Context et Internationalisation
+
 #### Objectif : Gérer les préférences de langue
 
 - [ ] 2.1 Créer le LanguageContext
@@ -92,7 +103,16 @@ Cette solution permet une gestion centralisée des traductions et facilite l'ajo
 ```
 <img src="images/french.png" width="400"/><img src="images/english.png" width="400"/>
 
+### Difficultés rencontrées :
+
+1. **Structure des traductions** : Organiser les traductions de manière à les rendre facilement accessibles et maintenables. **Solution** : J'ai créé un objet de traductions structuré par langue puis par clé, facilitant l'ajout de nouvelles langues ou textes à traduire.
+2. **Accès aux traductions dans les composants imbriqués** : Comment rendre les traductions disponibles à travers toute l'application sans passer par les props. **Solution** : Utilisation de l'API Context de React (`createContext`, `useContext`) pour fournir les traductions à tous les composants sans avoir à passer des props à travers tous les niveaux intermédiaires.
+3. **Mise à jour dynamique de la langue** : Assurer que tous les composants sont réactifs au changement de langue. **Solution** : J'ai encapsulé la fonction de traduction `t()` dans un `useCallback` qui dépend de la langue sélectionnée, garantissant que tous les composants utilisant cette fonction se mettront à jour automatiquement lors d'un changement de langue.
+
+
+
 ### Exercice 3 : Hooks Personnalisés
+
 #### Objectif : Créer des hooks réutilisables
 
 - [ ] 3.1 Créer le hook useDebounce
@@ -119,7 +139,17 @@ Ces hooks personnalisés améliorent l'expérience utilisateur en:
 ```
 <img src="images/localstorage.png" width="500"/>
 
+### Difficultés rencontrées :
+
+1. **Conception du hook useDebounce** : Déterminer la bonne approche pour implémenter le debounce avec les hooks React. **Solution** : J'ai utilisé une combinaison de `useState` et `useEffect` avec `setTimeout` et `clearTimeout` pour créer un mécanisme qui retarde la mise à jour d'une valeur.
+2. Persistance et synchronisation dans useLocalStorage: Gérer à la fois la persistance des données et la synchronisation entre différents onglets ou fenêtres. **Solution**:
+   - Pour la persistance : Utilisation de `window.localStorage` avec parsing JSON
+   - Pour la synchronisation : Utilisation de l'événement `storage` de window pour détecter les changements dans d'autres onglets
+
+
+
 ### Exercice 4 : Gestion Asynchrone et Pagination
+
 #### Objectif : Gérer le chargement et la pagination
 
 - [ ] 4.1 Ajouter le bouton de rechargement
@@ -151,6 +181,19 @@ Documentation de la solution:
 [Ajoutez vos captures d'écran]
 ```
 <img src="images/page-1-avec-bouton-recharger-french.png" width="260"/><img src="images/page-4-avec-bouton-reload-english.png" width="260"/><img src="images/derniere-page.png" width="260"/>
+
+### Difficultés rencontrées :
+
+1. **Fonction de rechargement** : Permettre le rechargement des données sans dupliquer la logique de récupération. **Solution** : J'ai extrait la récupération des données dans une fonction `fetchProducts` à l'aide de `useCallback`, puis j'ai exposé cette fonction via `reloadProducts` pour permettre un rechargement manuel.
+
+2. Implémentation de la pagination : Gérer correctement les états locaux de pagination et les synchroniser avec les requêtes API. **Solution** :
+
+   - Ajout d'états pour gérer la page courante et le nombre total de pages
+   - Mise à jour de l'URL de l'API pour inclure les paramètres de pagination
+   - Création de fonctions de navigation (`nextPage`, `previousPage`) avec gestion des limites
+
+   
+
 ## Rendu
 
 - Ajoutez l'URL de votre dépôt Github dans  **Classroom** et envoyer la réponse dès le démarage de votre projet.
