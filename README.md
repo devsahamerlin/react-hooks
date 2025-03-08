@@ -53,9 +53,18 @@ Pour chaque exercice :
 
 _Votre réponse pour l'exercice 1 :_
 ```
-Expliquez votre solution ici
+Expliquez votre solution ici:
+Documentation de la solution
+1-Ajouté un système de recherche qui filtre les produits en fonction du terme saisi
+2- Implémenté un hook personnalisé useDebounce pour éviter de déclencher trop de recherches pendant la saisie
+3- Connecté le composant ProductSearch au reste de l'application via les props et useEffect
+4- Ajouté une fonction pour filtrer les produits dans le hook useProductSearch
+
+Le debounce permet d'améliorer les performances en attendant que l'utilisateur finisse de taper avant de lancer la recherche.
+
 [Ajoutez vos captures d'écran]
 ```
+<img src="images/recherche-1.png" width="250"/><img src="images/recherche-2.png" width="250"/><img src="images/recherche-3.png" width="250"/>
 
 ### Exercice 2 : Context et Internationalisation
 #### Objectif : Gérer les préférences de langue

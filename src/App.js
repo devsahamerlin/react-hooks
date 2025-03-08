@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useCallback } from 'react';
 import ProductList from './components/ProductList';
 import ProductSearch from './components/ProductSearch';
 import ThemeToggle from './components/ThemeToggle';
@@ -9,7 +9,12 @@ export const ThemeContext = createContext();
 
 const App = () => {
   const [isDarkTheme, setIsDarkTheme] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
   // TODO: Exercice 2.2 - Ajouter l'état pour la langue
+
+  const handleSearch = useCallback((term) => {
+    setSearchTerm(term);
+  }, []);
 
   return (
     <ThemeContext.Provider value={{ isDarkTheme, setIsDarkTheme }}>
@@ -23,12 +28,12 @@ const App = () => {
           </div>
         </header>
         <main>
-          <ProductSearch />
-          <ProductList />
+          <ProductSearch onSearch={handleSearch} />
+          <ProductList searchTerm={searchTerm} />
         </main>
       </div>
     </ThemeContext.Provider>
   );
 };
 
-export default App
+export default App;
