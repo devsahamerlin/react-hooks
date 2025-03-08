@@ -75,9 +75,22 @@ Le debounce permet d'améliorer les performances en attendant que l'utilisateur 
 
 _Votre réponse pour l'exercice 2 :_
 ```
-Expliquez votre solution ici
+Documentation de la solution
+1- J'ai créé un LanguageContext qui contient:
+   - La langue actuelle
+   - La fonction pour changer de langue
+   - Un helper de traduction t()
+   - Un objet de traductions pour français et anglais
+
+2- Ajouté un sélecteur de langue permettant de basculer entre français et anglais
+3- Implémenté les traductions dans les composants à l'aide du hook useContext
+4- Traduit les éléments textuels comme les titres, les messages d'erreur, et les placeholders
+
+Cette solution permet une gestion centralisée des traductions et facilite l'ajout de nouvelles langues dans le futur.
+
 [Ajoutez vos captures d'écran]
 ```
+<img src="images/french.png" width="250"/><img src="images/english.png" width="250"/>
 
 ### Exercice 3 : Hooks Personnalisés
 #### Objectif : Créer des hooks réutilisables
