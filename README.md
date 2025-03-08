@@ -64,7 +64,7 @@ Le debounce permet d'améliorer les performances en attendant que l'utilisateur 
 
 [Ajoutez vos captures d'écran]
 ```
-<img src="images/recherche-1.png" width="250"/><img src="images/recherche-2.png" width="250"/><img src="images/recherche-3.png" width="250"/>
+<img src="images/recherche-1.png" width="260"/><img src="images/recherche-2.png" width="260"/><img src="images/recherche-3.png" width="260"/>
 
 ### Exercice 2 : Context et Internationalisation
 #### Objectif : Gérer les préférences de langue
@@ -90,7 +90,7 @@ Cette solution permet une gestion centralisée des traductions et facilite l'ajo
 
 [Ajoutez vos captures d'écran]
 ```
-<img src="images/french.png" width="250"/><img src="images/english.png" width="250"/>
+<img src="images/french.png" width="400"/><img src="images/english.png" width="400"/>
 
 ### Exercice 3 : Hooks Personnalisés
 #### Objectif : Créer des hooks réutilisables
@@ -101,9 +101,23 @@ Cette solution permet une gestion centralisée des traductions et facilite l'ajo
 
 _Votre réponse pour l'exercice 3 :_
 ```
-Expliquez votre solution ici
+Documentation de la solution:
+1- Implémenté le hook useDebounce(nous l'avions deja fais a l'excercice 1) qui permet de retarder l'exécution d'une action (ici la recherche) jusqu'à ce que l'utilisateur ait fini de taper
+2- Créé le hook useLocalStorage qui:
+   - Persiste les valeurs dans localStorage
+   - Fournit une API similaire à useState
+   - Gère la synchronisation entre les onglets/fenêtres
+   - Gère les erreurs de sérialisation/désérialisation
+
+3- Utilisé useLocalStorage pour persister les préférences utilisateur (thème et langue)
+
+Ces hooks personnalisés améliorent l'expérience utilisateur en:
+   - Réduisant les requêtes inutiles avec useDebounce
+   - Conservant les préférences entre les sessions avec useLocalStorage
+
 [Ajoutez vos captures d'écran]
 ```
+<img src="images/localstorage.png" width="500"/>
 
 ### Exercice 4 : Gestion Asynchrone et Pagination
 #### Objectif : Gérer le chargement et la pagination
