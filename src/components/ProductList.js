@@ -12,8 +12,13 @@ const ProductList = ({ searchTerm }) => {
     products, 
     loading, 
     error,
-    // TODO: Exercice 4.1 - Récupérer la fonction de rechargement
-    // TODO: Exercice 4.2 - Récupérer les fonctions et états de pagination
+    // Exercice 4.1 - Récupérer la fonction de rechargement
+    reloadProducts,
+    // Exercice 4.2 - Récupérer les fonctions et états de pagination
+    currentPage,
+    totalPages,
+    nextPage,
+    previousPage
   } = useProductSearch(searchTerm);
   
   if (loading) return (
@@ -32,7 +37,13 @@ const ProductList = ({ searchTerm }) => {
   
   return (
     <div>
-      {/* TODO: Exercice 4.1 - Ajouter le bouton de rechargement */}
+      {/* Exercice 4.1 - Ajouter le bouton de rechargement */}
+      <div className="d-flex justify-content-end mb-3">
+        <button className="btn btn-primary" onClick={reloadProducts}>
+          {t('reload')}
+        </button>
+      </div>
+      
       <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
         {products.map(product => (
           <div key={product.id} className="col">
@@ -58,7 +69,26 @@ const ProductList = ({ searchTerm }) => {
         ))}
       </div>
       
-      {/* TODO: Exercice 4.2 - Ajouter les contrôles de pagination */}
+      {/* Exercice 4.2 - Ajouter les contrôles de pagination */}
+      <nav className="mt-4">
+        <ul className="pagination justify-content-center">
+          <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
+            <button className="page-link" onClick={previousPage}>
+              {t('previous')}
+            </button>
+          </li>
+          <li className="page-item">
+            <span className="page-link">
+              {t('page')} {currentPage} {t('of')} {totalPages}
+            </span>
+          </li>
+          <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
+            <button className="page-link" onClick={nextPage}>
+              {t('next')}
+            </button>
+          </li>
+        </ul>
+      </nav>
     </div>
   );
 };

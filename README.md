@@ -128,10 +128,29 @@ Ces hooks personnalisés améliorent l'expérience utilisateur en:
 
 _Votre réponse pour l'exercice 4 :_
 ```
-Expliquez votre solution ici
+Documentation de la solution:
+1- Ajouté un bouton de rechargement pour rafraîchir les données:
+   - Création d'une fonction reloadProducts qui réinitialise l'état et relance la requête
+   - Ajout d'un bouton dans l'interface qui appelle cette fonction
+   - Traduction du bouton selon la langue sélectionnée
+
+2- Implémenté la pagination:
+   - Ajout des états pour la page courante et le nombre total de pages
+   - Modification de la requête API pour inclure les paramètres de pagination
+   - Ajout des fonctions nextPage et previousPage pour la navigation
+   - Création des contrôles de pagination dans l'interface
+   - Désactivation des boutons quand on atteint la première ou dernière page
+   - Traduction des éléments de pagination
+
+3- Cette implémentation permet:
+   - Une meilleure gestion des grands ensembles de données
+   - Une réduction du temps de chargement initial
+   - Une navigation intuitive entre les pages de résultats
+   - La possibilité de recharger les données en cas de mise à jour côté serveur
+
 [Ajoutez vos captures d'écran]
 ```
-
+<img src="images/page-1-avec-bouton-recharger-french.png" width="260"/><img src="images/page-4-avec-bouton-reload-english.png" width="260"/><img src="images/derniere-page.png" width="260"/>
 ## Rendu
 
 - Ajoutez l'URL de votre dépôt Github dans  **Classroom** et envoyer la réponse dès le démarage de votre projet.
